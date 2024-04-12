@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class idea_try {
+public class second_window_idea_gui {
     private JRadioButton personRadioButton;
     private JRadioButton studentRadioButton;
     private JTextField textField1;
@@ -23,7 +23,7 @@ public class idea_try {
     private JButton deleteButton;
     private JButton closeButton;
 
-    public idea_try() {
+    public second_window_idea_gui() {
         closeButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
