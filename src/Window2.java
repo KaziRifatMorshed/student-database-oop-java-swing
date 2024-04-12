@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+// THIS CODE IS NOW ABANDONED AS NOW ER HAVE second_window_idea_gui
 public class Window2 implements ActionListener {
     // this is the second window where we can manipulate data
     JFrame window2;
@@ -22,4 +23,4 @@ public class Window2 implements ActionListener {
     public void actionPerformed(ActionEvent actionEvent) {
 
     }
-}
+} // ABANDONED

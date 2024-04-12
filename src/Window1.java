@@ -16,7 +16,7 @@ public class Window1 implements ActionListener {
     public Window1() {
 //        window1 = new MyFrame_Template();
         window1 = new JFrame();
-        window1.setSize(600, 600);
+        window1.setSize(400, 400);
         window1.setVisible(true);
         window1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -71,7 +71,8 @@ public class Window1 implements ActionListener {
             System.exit(0);
         }
         if (actionEvent.getSource() == edit_item) {
-            Window2 window2 = new Window2();
+//            Window2 window2 = new Window2();
+            new second_window_idea_gui();
         }
     }
 }
