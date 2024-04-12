@@ -12,6 +12,7 @@ public class Window1 implements ActionListener {
     JMenuBar menuBar1;
     JMenu file_menu, edit_menu, help_menu;
     JMenuItem load_item, save_item, exit_item, edit_item;
+    // Database ArrayList ki ei class e hobe ?
 
     public Window1() {
 //        window1 = new MyFrame_Template();

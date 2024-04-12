@@ -29,6 +29,7 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
     private JButton closeButton;
     private JPanel Main_Panel;
 
+    protected Database database;
 
     public second_window_idea_gui() {
         window_frame = new JFrame();
@@ -38,6 +39,8 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
         window_frame.setSize(500, 500);
         window_frame.setContentPane(Main_Panel);
 
+        database = new Database();
+
         ButtonGroup personStuButton = new ButtonGroup();
         personStuButton.add(personRadioButton);
         personStuButton.add(studentRadioButton);
@@ -45,24 +48,28 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
 
 
         // addActionListener block
-        personRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println("Person Button got selected");
-                Stu_id_textField1.setVisible(false);
-                is_student = false;
-            }
-        });
-        studentRadioButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent actionEvent) {
-                System.out.println("Student Button got selected");
-                Stu_id_textField1.setVisible(true);
-                is_student = true;
-            }
-        });
+        personRadioButton.addActionListener(this);
+        studentRadioButton.addActionListener(this);
+//        personRadioButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent actionEvent) {
+//                System.out.println("Person Button got selected");
+//                Stu_id_textField1.setVisible(false);
+//                is_student = false;
+//            }
+//        });
+//
+//        studentRadioButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent actionEvent) {
+//                System.out.println("Student Button got selected");
+//                Stu_id_textField1.setVisible(true);
+//                is_student = true;
+//            }
+//        });
 
         addButton.addActionListener(this);
+        deleteButton.addActionListener(this);
 
         closeButton.addActionListener(new ActionListener() {
             @Override
@@ -70,6 +77,9 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
                 System.exit(0);
             }
         });
+
+
+        // CONSTRUCTOR END
     }
 
     public static void main(String[] args) {
@@ -78,25 +88,28 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
+
+        form_name = NAME_textField2.getText();
+        form_road = road_textField3.getText();
+        form_post_office = post_office_textField4.getText();
+        form_zilla = zilla_textField5.getText();
+        Address new_address_entry = new Address(form_road, form_post_office, form_zilla);
+
+
         // Radio Button
-//        if (actionEvent.getSource() == personRadioButton) {
-//            System.out.println("Person Button got selected");
-//            Stu_id_textField1.setVisible(false);
-//            is_student = false;
-//        } else {
-//            System.out.println("Student Button got selected");
-//            Stu_id_textField1.setVisible(true);
-//            is_student = true;
-//        }
+        if (actionEvent.getSource() == personRadioButton) {
+            System.out.println("Person Button got selected");
+            Stu_id_textField1.setVisible(false);
+            is_student = false;
+        } else {
+            System.out.println("Student Button got selected");
+            Stu_id_textField1.setVisible(true);
+            is_student = true;
+        }
 
 
         // Add Button
         if (actionEvent.getSource() == addButton) {
-            form_name = NAME_textField2.getText();
-            form_road = road_textField3.getText();
-            form_post_office = post_office_textField4.getText();
-            form_zilla = zilla_textField5.getText();
-            Address new_address_entry = new Address(form_road, form_post_office, form_zilla);
 
             String temp = "0";
             temp = Stu_id_textField1.getText();
@@ -106,10 +119,32 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
 
             if (is_student) {
                 new_entry = new Student(form_id, form_name, new_address_entry);
+                database.add_to_Database(new_entry);
             } else {
                 new_entry = new Person(form_name, new_address_entry);
+                database.add_to_Database(new_entry);
             }
-            System.out.println(new_entry);
+//            System.out.println(new_entry);
+        }
+
+
+        // Delete Button
+        if (actionEvent.getSource() == deleteButton) {
+
+            String temp = "0";
+            temp = Stu_id_textField1.getText();
+            form_id = Integer.parseInt(temp);
+
+            Person new_entry = null;
+
+            if (is_student) {
+                new_entry = new Student(form_id, form_name, new_address_entry);
+                database.remove_from_database(new_entry);
+            } else {
+                new_entry = new Person(form_name, new_address_entry);
+                database.remove_from_database(new_entry);
+            }
+//            System.out.println(new_entry);
         }
 
 
