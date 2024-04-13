@@ -1,9 +1,16 @@
 package Project.Student_database;
 
+import javax.swing.ButtonGroup;
+
 public class second_window_netbeans extends javax.swing.JPanel {
 
     public second_window_netbeans() {
         initComponents();
+        
+        ButtonGroup personStuButton = new ButtonGroup();
+        personStuButton.add(person_radio_button);
+        personStuButton.add(student_radio_button);
+        
     }
 
     /**
@@ -287,6 +294,7 @@ public class second_window_netbeans extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_next_item_buttonActionPerformed
 
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add_button;
@@ -315,4 +323,7 @@ public class second_window_netbeans extends javax.swing.JPanel {
     private javax.swing.JRadioButton student_radio_button;
     private javax.swing.JButton update_button;
     // End of variables declaration//GEN-END:variables
+
+
+
 }
