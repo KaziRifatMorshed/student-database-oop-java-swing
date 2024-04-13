@@ -1,5 +1,6 @@
 package anissir_studentdatabase;
 
+import static anissir_studentdatabase.dsel_checker.database;
 import java.io.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -160,6 +161,11 @@ public class Second_Window extends javax.swing.JFrame {
         });
 
         sort_button.setText("Sort");
+        sort_button.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sort_buttonActionPerformed(evt);
+            }
+        });
 
         update_button.setText("Update");
         update_button.addActionListener(new java.awt.event.ActionListener() {
@@ -333,8 +339,8 @@ public class Second_Window extends javax.swing.JFrame {
         total_count = database.total_count();
         current_index++;
 
-        System.out.println("ADDED:\n" + new_entry + "\n");
-        JOptionPane.showMessageDialog(null, text_form_name + " has been Added!");
+        System.out.println("ADDED:\n" + new_entry + "\nTotal Count = " + total_count + "\n");
+        JOptionPane.showMessageDialog(null, "\"" + text_form_name + "\" has been Added!");
 
 
     }//GEN-LAST:event_add_buttonActionPerformed
@@ -352,28 +358,23 @@ public class Second_Window extends javax.swing.JFrame {
         form_id.setVisible(true);
         System.out.println("Student Button got selected");
         blank_text_box();
-        form_id.setVisible(true);
     }//GEN-LAST:event_student_radio_buttonActionPerformed
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
         // DELETE
         try {
-
             Person delete_entry = database.get_object(current_index);
             database.remove_from_database(delete_entry);
 
             total_count = database.total_count();
 
-            System.out.println("REMOVED:\n" + delete_entry + "\n");
-            JOptionPane.showMessageDialog(null, text_form_name + " Deleted!");
+            System.out.println("REMOVED:\n" + delete_entry + "\nTotal Count = " + total_count + "\n");
+            JOptionPane.showMessageDialog(null, text_form_name + " has been Deleted!");
             blank_text_box();
         } catch (IndexOutOfBoundsException e) {
             System.err.println("ENTRY NOT FOUNT");
             e.printStackTrace();
-
         }
-
-
     }//GEN-LAST:event_delete_buttonActionPerformed
 
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
@@ -405,44 +406,58 @@ public class Second_Window extends javax.swing.JFrame {
             populate_text_box(database.get_object(current_index));
             System.err.println("last entry is showing in GUI window");
         } else {
-            System.err.println("NO ENTRY");
+            System.out.println("NO ENTRY");
             JOptionPane.showMessageDialog(null, "NO ENTRY");
         }
     }//GEN-LAST:event_last_itemActionPerformed
 
     private void item_previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_previousActionPerformed
-        total_count = database.total_count();
 
-        if (total_count > 0) {
+        try {
+            total_count = database.total_count();
 
-            if (current_index >= 0 && current_index < total_count) {
-                current_index--;
+            if (total_count > 0) {
+
+                if (current_index >= 0 && current_index < total_count) {
+                    current_index--;
+                }
+
+                populate_text_box(database.get_object(current_index));
+                System.err.println(current_index + "th entry is showing in GUI window");
+            } else {
+                System.err.println("NO ENTRY");
+                JOptionPane.showMessageDialog(null, "NO ENTRY");
             }
+        } catch (Exception e) {
 
-            populate_text_box(database.get_object(current_index));
-            System.err.println(current_index + "th entry is showing in GUI window");
-        } else {
-            System.err.println("NO ENTRY");
-            JOptionPane.showMessageDialog(null, "NO ENTRY");
         }
     }//GEN-LAST:event_item_previousActionPerformed
 
     private void next_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_itemActionPerformed
-        total_count = database.total_count();
 
-        if (total_count > 0) {
+        try {
+            total_count = database.total_count();
 
-            if (current_index >= 0 && current_index < total_count) {
-                current_index++;
+            if (total_count > 0) {
+
+                if (current_index >= 0 && current_index < total_count) {
+                    current_index++;
+                }
+
+                populate_text_box(database.get_object(current_index));
+                System.out.println(current_index + "th entry is showing in GUI window");
+            } else {
+                System.out.println("NO ENTRY");
+                JOptionPane.showMessageDialog(null, "NO ENTRY");
             }
-
-            populate_text_box(database.get_object(current_index));
-            System.err.println(current_index + "th entry is showing in GUI window");
-        } else {
-            System.err.println("NO ENTRY");
-            JOptionPane.showMessageDialog(null, "NO ENTRY");
+        } catch (Exception e) {
         }
     }//GEN-LAST:event_next_itemActionPerformed
+
+    private void sort_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sort_buttonActionPerformed
+        database.sort_database();
+        item_firstActionPerformed(evt);
+    }//GEN-LAST:event_sort_buttonActionPerformed
 
     public void blank_text_box() {
         this.form_id.setText("");
@@ -471,6 +486,7 @@ public class Second_Window extends javax.swing.JFrame {
 
     public void serilizer() throws Exception {
         total_count = database.total_count();
+        System.out.println("Serilizing, saving to a file...\nTotal count = " + total_count);
         try {
             FileOutputStream file1 = new FileOutputStream(savefile_path);
             ObjectOutputStream oos = new ObjectOutputStream(file1);
@@ -489,37 +505,39 @@ public class Second_Window extends javax.swing.JFrame {
     }
 
     public void deserilizer() {
-        Person inputted_person = null;
+
         try {
             FileInputStream file2 = null;
             file2 = new FileInputStream(savefile_path);
             ObjectInputStream ois = new ObjectInputStream(file2);
 
-            // while (ois.readObject() != null) { // ফার্স্ট অবজেক্ট কে এই লাইনের পড়ে নিচ্ছে
-            while (true) { // ERROR HERE
+            while (true) {
                 try {
-                    inputted_person = (Person) ois.readObject();
-
-                    if (inputted_person instanceof Student) {
-                        inputted_person = (Student) ois.readObject();
+                    Object obj = ois.readObject();
+                    if (obj instanceof Student) {
+                        database.add_to_Database((Student) obj);
+                    } else if (obj instanceof Person) {
+                        database.add_to_Database((Person) obj);
+                    } else {
+                        break; // Exit loop if not a Person object
                     }
 
-                    database.add_to_Database(inputted_person);
-
+//                    database.add_to_Database(obj); // this line was faulty line
                 } catch (EOFException e) {
                     break;
                 }
-            } // YAHOO
+            } // YAHOO WORKING !!!!!!!!!!!
 
             System.out.println("\n prev data loading DONE");
             JOptionPane.showMessageDialog(null, "Previous data has been loaded from \"" + savefile_path + "\" Successfully.");
 
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            System.out.println("FILE NOT FOUND, sadly");
+//            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+//            throw new RuntimeException(e);
         }
 
     }
