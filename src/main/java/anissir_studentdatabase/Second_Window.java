@@ -11,7 +11,7 @@ public class Second_Window extends javax.swing.JFrame {
     protected Database database = null;
     private boolean is_student = true;
     protected String text_form_name, text_form_road, text_form_post_office, text_form_zilla;
-    protected int text_form_id = 0, total_count = 0, current_index = -1;
+    protected int text_form_id = 0, total_count = 0, current_index = 0; // set current_index = 0
     private String savefile_path = "./savefile/test.ser";
 
     public Second_Window() {
@@ -88,11 +88,6 @@ public class Second_Window extends javax.swing.JFrame {
         jLabel8.setText("District:");
 
         form_post_office.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        form_post_office.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                form_post_officeActionPerformed(evt);
-            }
-        });
 
         form_district.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
 
@@ -297,14 +292,10 @@ public class Second_Window extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void form_post_officeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_form_post_officeActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_form_post_officeActionPerformed
-
-    private void update_current_index_showing() {
-        total_count = database.total_count();
-        show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]");
-    }
+//    private void update_current_index_showing() {
+//        total_count = database.total_count();
+//        show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]");
+//    }
 
 
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
@@ -342,7 +333,6 @@ public class Second_Window extends javax.swing.JFrame {
         System.out.println("ADDED:\n" + new_entry + "\nTotal Count = " + total_count + "\n");
         JOptionPane.showMessageDialog(null, "\"" + text_form_name + "\" has been Added!");
 
-
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void person_radio_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_person_radio_buttonActionPerformed
@@ -351,8 +341,6 @@ public class Second_Window extends javax.swing.JFrame {
         System.out.println("Person Button got selected");
         blank_text_box();
     }//GEN-LAST:event_person_radio_buttonActionPerformed
-
-
     private void student_radio_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_radio_buttonActionPerformed
         is_student = true;
         form_id.setVisible(true);
@@ -360,6 +348,7 @@ public class Second_Window extends javax.swing.JFrame {
         blank_text_box();
     }//GEN-LAST:event_student_radio_buttonActionPerformed
 
+    
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
         try {
             Person delete_entry = database.get_object(current_index);
@@ -376,6 +365,7 @@ public class Second_Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_delete_buttonActionPerformed
 
+    
     private void update_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_update_buttonActionPerformed
         try {
             serilizer();
@@ -385,6 +375,7 @@ public class Second_Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_update_buttonActionPerformed
 
+    
     private void item_firstActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_firstActionPerformed
         total_count = database.total_count();
         current_index = 0;
@@ -397,6 +388,7 @@ public class Second_Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_item_firstActionPerformed
 
+    
     private void last_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_last_itemActionPerformed
         total_count = database.total_count();
 
@@ -410,6 +402,7 @@ public class Second_Window extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_last_itemActionPerformed
 
+    
     private void item_previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_previousActionPerformed
         System.out.println("before = " + current_index);
         try {
@@ -605,3 +598,10 @@ public class Second_Window extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
 }
+
+
+
+/*
+        total_count = database.total_count();
+        show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]");
+*/
