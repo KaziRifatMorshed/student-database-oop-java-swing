@@ -3,18 +3,19 @@ package Project.Student_database;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.security.Key;
 
 public class Window1 implements ActionListener {
+
     // this is the first welcome window
 //    MyFrame_Template window1;
     JFrame window1;
     JMenuBar menuBar1;
     JMenu file_menu, edit_menu, help_menu;
     JMenuItem load_item, save_item, exit_item, edit_item;
-    second_window_idea_gui window2 = null;
-    // Database ArrayList ki ei class e hobe ?
+    second_window_idea_gui window2_idea = null;
+    second_window_netbeans window2 = null;
 
+    // Database ArrayList ki ei class e hobe ?
     public Window1() {
 //        window1 = new MyFrame_Template();
         window1 = new JFrame();
@@ -22,12 +23,10 @@ public class Window1 implements ActionListener {
         window1.setVisible(true);
         window1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-
         menuBar1 = new JMenuBar();
         window1.setJMenuBar(menuBar1);
 //        menuBar1.setVisible(true);
         window1.setLayout(new GridLayout());
-
 
         file_menu = new JMenu("File");
         edit_menu = new JMenu("Edit");
@@ -74,7 +73,8 @@ public class Window1 implements ActionListener {
         }
         if (actionEvent.getSource() == edit_item) {
 //            Window2 window2 = new Window2();
-            window2 = new second_window_idea_gui();
+            new second_window_idea_gui().setVisible(true);
+//            new second_window_netbeans().setVisible(true);
         }
     }
 }

@@ -23,7 +23,7 @@ public class Address {
 
     @Override
     public String toString() {
-//        return "Address:\nRoad:" + road + ", PostOffice:" + upazilla + ", District:" + zilla ;
-        return STR."Address:\nRoad:\{road}, PostOffice:\{upazilla}, District:\{zilla}";
+        return "Address:\nRoad:" + road + ", PostOffice:" + upazilla + ", District:" + zilla ;
+//        return STR."Address:\nRoad:\{road}, PostOffice:\{upazilla}, District:\{zilla}";
     }
 }

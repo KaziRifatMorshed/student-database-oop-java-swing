@@ -19,7 +19,7 @@ public class Person {
 
     @Override
     public String toString() {
-//        return "name=" + name + "\n" + address;
-        return STR."name=\{name}\n\{address}";
+        return "name=" + name + "\n" + address;
+//        return STR."name=\{name}\n\{address}";
     }
 }
