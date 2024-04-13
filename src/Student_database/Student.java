@@ -1,6 +1,8 @@
-package Project.Student_database;
+package Student_database;
 
-public class Student extends Person {
+import java.io.Serializable;
+
+public class Student extends Person implements Serializable{
     protected int stu_id;
 
     public Student(int id, String name, Address add) {

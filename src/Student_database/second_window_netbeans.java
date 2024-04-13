@@ -1,4 +1,4 @@
-package Project.Student_database;
+package Student_database;
 
 import javax.swing.ButtonGroup;
 

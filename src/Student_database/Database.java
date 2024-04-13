@@ -1,8 +1,9 @@
-package Project.Student_database;
+package Student_database;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Database {
+public class Database implements Serializable{
     ArrayList<Person> arrayListDatabase = null;
 
     public Database() {

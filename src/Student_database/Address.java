@@ -1,6 +1,8 @@
-package Project.Student_database;
+package Student_database;
 
-public class Address {
+import java.io.Serializable;
+
+public class Address implements Serializable{
     protected String road, upazilla, zilla;
 
     public Address(String r, String u, String z) {

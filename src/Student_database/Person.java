@@ -1,6 +1,8 @@
-package Project.Student_database;
+package Student_database;
 
-public class Person {
+import java.io.Serializable;
+
+public class Person implements Serializable{
     protected String name;
     protected Address address;
 
