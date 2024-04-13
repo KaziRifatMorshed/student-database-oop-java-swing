@@ -44,7 +44,6 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
         ButtonGroup personStuButton = new ButtonGroup();
         personStuButton.add(personRadioButton);
         personStuButton.add(studentRadioButton);
-        studentRadioButton.setSelected(true); // Probably, making issues
 
 
         // addActionListener block
@@ -101,7 +100,8 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
             System.out.println("Person Button got selected");
             Stu_id_textField1.setVisible(false);
             is_student = false;
-        } else {
+        }
+        if (actionEvent.getSource() == studentRadioButton) {
             System.out.println("Student Button got selected");
             Stu_id_textField1.setVisible(true);
             is_student = true;
@@ -111,8 +111,10 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
         // Add Button
         if (actionEvent.getSource() == addButton) {
 
-            String temp = "0";
-            temp = Stu_id_textField1.getText();
+            String temp = Stu_id_textField1.getText();
+            if (temp.isEmpty()) {
+                temp = "0"; // this was done to avoid error
+            }
             form_id = Integer.parseInt(temp);
 
             Person new_entry = null;
@@ -120,19 +122,22 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
             if (is_student) {
                 new_entry = new Student(form_id, form_name, new_address_entry);
                 database.add_to_Database(new_entry);
-            } else {
+            }
+            if (!is_student) {
                 new_entry = new Person(form_name, new_address_entry);
                 database.add_to_Database(new_entry);
             }
-//            System.out.println(new_entry);
+            System.out.println("ADDED:\n" + new_entry + "\n");
         }
 
 
         // Delete Button
         if (actionEvent.getSource() == deleteButton) {
 
-            String temp = "0";
-            temp = Stu_id_textField1.getText();
+            String temp = Stu_id_textField1.getText();
+            if (temp.isEmpty()) {
+                temp = "0"; // this was done to avoid error
+            }
             form_id = Integer.parseInt(temp);
 
             Person new_entry = null;
@@ -144,7 +149,7 @@ public class second_window_idea_gui extends JFrame implements ActionListener {
                 new_entry = new Person(form_name, new_address_entry);
                 database.remove_from_database(new_entry);
             }
-//            System.out.println(new_entry);
+            System.out.println("Removed:\n" + new_entry + "\n");
         }
 
 

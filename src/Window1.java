@@ -12,6 +12,7 @@ public class Window1 implements ActionListener {
     JMenuBar menuBar1;
     JMenu file_menu, edit_menu, help_menu;
     JMenuItem load_item, save_item, exit_item, edit_item;
+    second_window_idea_gui window2 = null;
     // Database ArrayList ki ei class e hobe ?
 
     public Window1() {
@@ -73,7 +74,7 @@ public class Window1 implements ActionListener {
         }
         if (actionEvent.getSource() == edit_item) {
 //            Window2 window2 = new Window2();
-            new second_window_idea_gui();
+            window2 = new second_window_idea_gui();
         }
     }
 }

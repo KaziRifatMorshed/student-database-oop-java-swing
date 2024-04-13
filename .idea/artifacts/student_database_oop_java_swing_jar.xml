@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="student-database-oop-java-swing:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/student_database_oop_java_swing_jar</output-path>
+    <root id="archive" name="student-database-oop-java-swing.jar">
+      <element id="module-output" name="student-database-oop-java-swing" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" />
+      </element>
+    </root>
+  </artifact>
+</component>
