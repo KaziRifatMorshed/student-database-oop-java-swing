@@ -17,7 +17,8 @@ public class Second_Window extends javax.swing.JFrame {
     public Second_Window() {
         initComponents();
         database = new Database();
-
+        // KAZI RIFAT MORSHED 230220
+        // 14 April 2024 02:23AM Khulna, Bangladesh
         deserilizer();
         // end of CONSTRUCTOR
     }
@@ -62,6 +63,11 @@ public class Second_Window extends javax.swing.JFrame {
         buttonGroup1.add(student_radio_button);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                formMouseClicked(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         jLabel1.setText("Data Manupulation Form");
@@ -177,7 +183,7 @@ public class Second_Window extends javax.swing.JFrame {
         });
 
         show_current_index.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        show_current_index.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        show_current_index.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -201,7 +207,7 @@ public class Second_Window extends javax.swing.JFrame {
                                             .addComponent(jLabel7)
                                             .addComponent(jLabel8)
                                             .addComponent(jLabel6))))
-                                .addGap(106, 106, 106)
+                                .addGap(46, 46, 46)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(person_radio_button)
@@ -215,30 +221,28 @@ public class Second_Window extends javax.swing.JFrame {
                                         .addComponent(form_district))))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(130, 130, 130)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(add_button)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(delete_button)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(sort_button, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(sort_button, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(11, 11, 11)
+                                .addComponent(update_button)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(close_button))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(item_first)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(item_previous)
+                                .addComponent(item_previous, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(show_current_index, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(11, 11, 11)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(next_item)
+                                .addComponent(show_current_index, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(last_item))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(update_button)
+                                .addComponent(next_item, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(close_button)))))
-                .addContainerGap(19, Short.MAX_VALUE))
+                                .addComponent(last_item)))))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,42 +255,43 @@ public class Second_Window extends javax.swing.JFrame {
                     .addComponent(person_radio_button)
                     .addComponent(student_radio_button))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(form_id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(form_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(form_road, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(form_post_office, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(form_district, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(form_id, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(item_first)
-                        .addComponent(item_previous)
-                        .addComponent(next_item)
-                        .addComponent(last_item))
-                    .addComponent(show_current_index, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel4)
+                            .addComponent(form_name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel6)
+                            .addComponent(form_road, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel7)
+                            .addComponent(form_post_office, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(form_district, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(item_first)
+                            .addComponent(item_previous)
+                            .addComponent(next_item)
+                            .addComponent(last_item)))
+                    .addComponent(show_current_index, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(12, 12, 12)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(add_button)
                     .addComponent(delete_button)
                     .addComponent(sort_button)
                     .addComponent(update_button)
                     .addComponent(close_button))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(57, Short.MAX_VALUE))
         );
 
         pack();
@@ -404,7 +409,7 @@ public class Second_Window extends javax.swing.JFrame {
 
     
     private void item_previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_previousActionPerformed
-        System.out.println("before = " + current_index);
+//        System.out.println("before = " + current_index);
         try {
             total_count = database.total_count();
 
@@ -420,14 +425,14 @@ public class Second_Window extends javax.swing.JFrame {
                 System.err.println("NO ENTRY");
                 JOptionPane.showMessageDialog(null, "NO ENTRY");
             }
-            System.out.println("after = " + current_index);
+//            System.out.println("after = " + current_index);
         } catch (Exception e) {
 
         }
     }//GEN-LAST:event_item_previousActionPerformed
 
     private void next_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_itemActionPerformed
-        System.out.println("before =" + current_index);
+//        System.out.println("before =" + current_index);
         try {
             total_count = database.total_count();
 
@@ -443,7 +448,7 @@ public class Second_Window extends javax.swing.JFrame {
                 System.out.println("NO ENTRY");
                 JOptionPane.showMessageDialog(null, "NO ENTRY");
             }
-            System.out.println("after =" + current_index);
+//            System.out.println("after =" + current_index);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_next_itemActionPerformed
@@ -452,6 +457,12 @@ public class Second_Window extends javax.swing.JFrame {
         database.sort_database();
         item_firstActionPerformed(evt);
     }//GEN-LAST:event_sort_buttonActionPerformed
+
+    
+    private void formMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseClicked
+        total_count = database.total_count();
+        show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]");
+    }//GEN-LAST:event_formMouseClicked
 
     public void blank_text_box() {
         this.form_id.setText("");
@@ -476,7 +487,13 @@ public class Second_Window extends javax.swing.JFrame {
         } else {
             form_id.setVisible(false);
         }
-    }
+        
+        // put this code here as, we are populating text boxes each time
+        // as well as, per button click, indexing text needs to be changed
+        // and it works now
+        total_count = database.total_count();
+        show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]");
+    } // HURRAH !!!!!
 
     public void serilizer() throws Exception {
         total_count = database.total_count();
@@ -495,11 +512,9 @@ public class Second_Window extends javax.swing.JFrame {
             e.printStackTrace();
             throw new Exception();
         }
-
     }
 
     public void deserilizer() {
-
         try {
             FileInputStream file2 = null;
             file2 = new FileInputStream(savefile_path);
@@ -515,7 +530,6 @@ public class Second_Window extends javax.swing.JFrame {
                     } else {
                         break;
                     }
-
 //                    database.add_to_Database(obj); // this line was faulty line
                 } catch (EOFException e) {
                     break;
