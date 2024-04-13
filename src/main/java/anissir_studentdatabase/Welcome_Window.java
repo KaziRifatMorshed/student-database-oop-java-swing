@@ -9,16 +9,12 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-
 public class Welcome_Window implements ActionListener {
-
 
     JFrame window1;
     JMenuBar menuBar1;
     JMenu file_menu, edit_menu, help_menu;
     JMenuItem load_item, save_item, exit_item, edit_item;
-
-
 
     public Welcome_Window() {
 
@@ -42,8 +38,8 @@ public class Welcome_Window implements ActionListener {
         load_item = new JMenuItem("Load");
         save_item = new JMenuItem("Save");
         exit_item = new JMenuItem("Exit");
-        file_menu.add(load_item);
-        file_menu.add(save_item);
+//        file_menu.add(load_item);
+//        file_menu.add(save_item);
         file_menu.add(exit_item);
 
         edit_item = new JMenuItem("Edit Data");
@@ -76,11 +72,12 @@ public class Welcome_Window implements ActionListener {
             System.exit(0);
         }
         if (actionEvent.getSource() == edit_item) {
-            
+
             new Second_Window().setVisible(true);
-            
+
+        }
+        if (actionEvent.getSource() == load_item) {
+            // empty now
         }
     }
 }
-
-

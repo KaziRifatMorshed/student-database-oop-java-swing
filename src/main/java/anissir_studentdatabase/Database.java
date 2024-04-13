@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Database implements Serializable {
 
     ArrayList<Person> arrayListDatabase = null;
+//    protected String savefile_path_for_loading = null;
 
     public Database() {
         arrayListDatabase = new ArrayList<>();

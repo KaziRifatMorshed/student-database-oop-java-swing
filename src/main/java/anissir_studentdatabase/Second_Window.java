@@ -5,20 +5,19 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.*;
 
-
 public class Second_Window extends javax.swing.JFrame {
-    
+
     protected Database database = null;
     private boolean is_student = true;
     protected String text_form_name, text_form_road, text_form_post_office, text_form_zilla;
     protected int text_form_id = 0, total_count = 0, current_index = -1;
     private String savefile_path = "./savefile/test.ser";
-    
+
     public Second_Window() {
         initComponents();
         database = new Database();
 
-//        deserilizer();
+        deserilizer();
         // end of CONSTRUCTOR
     }
 
@@ -295,12 +294,11 @@ public class Second_Window extends javax.swing.JFrame {
     private void form_post_officeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_form_post_officeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_form_post_officeActionPerformed
-    
+
     private void update_current_index_showing() {
         total_count = database.total_count();
         show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]");
     }
-
 
 
     private void close_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_close_buttonActionPerformed
@@ -315,15 +313,15 @@ public class Second_Window extends javax.swing.JFrame {
         text_form_post_office = form_post_office.getText();
         text_form_zilla = form_district.getText();
         Address new_address_entry = new Address(text_form_road, text_form_post_office, text_form_zilla);
-        
+
         String temp = form_id.getText();
         if (temp.isEmpty()) {
             temp = "0"; // this was done to avoid error
         }
         text_form_id = Integer.parseInt(temp);
-        
+
         Person new_entry = null;
-        
+
         if (is_student) {
             new_entry = new Student(text_form_id, text_form_name, new_address_entry);
             database.add_to_Database(new_entry);
@@ -337,7 +335,7 @@ public class Second_Window extends javax.swing.JFrame {
 
         System.out.println("ADDED:\n" + new_entry + "\n");
         JOptionPane.showMessageDialog(null, text_form_name + " has been Added!");
-        
+
 
     }//GEN-LAST:event_add_buttonActionPerformed
 
@@ -347,7 +345,7 @@ public class Second_Window extends javax.swing.JFrame {
         System.out.println("Person Button got selected");
         blank_text_box();
     }//GEN-LAST:event_person_radio_buttonActionPerformed
-    
+
 
     private void student_radio_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_student_radio_buttonActionPerformed
         is_student = true;
@@ -360,21 +358,21 @@ public class Second_Window extends javax.swing.JFrame {
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
         // DELETE
         try {
-            
+
             Person delete_entry = database.get_object(current_index);
             database.remove_from_database(delete_entry);
-            
+
             total_count = database.total_count();
-            
+
             System.out.println("REMOVED:\n" + delete_entry + "\n");
             JOptionPane.showMessageDialog(null, text_form_name + " Deleted!");
             blank_text_box();
         } catch (IndexOutOfBoundsException e) {
             System.err.println("ENTRY NOT FOUNT");
             e.printStackTrace();
-            
+
         }
-        
+
 
     }//GEN-LAST:event_delete_buttonActionPerformed
 
@@ -401,7 +399,7 @@ public class Second_Window extends javax.swing.JFrame {
 
     private void last_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_last_itemActionPerformed
         total_count = database.total_count();
-        
+
         if (total_count > 0) {
             current_index = total_count - 1;
             populate_text_box(database.get_object(current_index));
@@ -414,13 +412,13 @@ public class Second_Window extends javax.swing.JFrame {
 
     private void item_previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_previousActionPerformed
         total_count = database.total_count();
-        
+
         if (total_count > 0) {
-            
+
             if (current_index >= 0 && current_index < total_count) {
                 current_index--;
             }
-            
+
             populate_text_box(database.get_object(current_index));
             System.err.println(current_index + "th entry is showing in GUI window");
         } else {
@@ -431,13 +429,13 @@ public class Second_Window extends javax.swing.JFrame {
 
     private void next_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_itemActionPerformed
         total_count = database.total_count();
-        
+
         if (total_count > 0) {
-            
+
             if (current_index >= 0 && current_index < total_count) {
                 current_index++;
             }
-            
+
             populate_text_box(database.get_object(current_index));
             System.err.println(current_index + "th entry is showing in GUI window");
         } else {
@@ -445,7 +443,7 @@ public class Second_Window extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "NO ENTRY");
         }
     }//GEN-LAST:event_next_itemActionPerformed
-    
+
     public void blank_text_box() {
         this.form_id.setText("");
         this.form_district.setText("");
@@ -453,7 +451,7 @@ public class Second_Window extends javax.swing.JFrame {
         this.form_road.setText("");
         this.form_post_office.setText("");
     }
-    
+
     public void populate_text_box(Person p) {
 
 //        this.form_id.setText(Integer.toString(p.getStu_id()));// ???
@@ -461,7 +459,7 @@ public class Second_Window extends javax.swing.JFrame {
         this.form_road.setText(p.getAdd().getRoad());
         this.form_post_office.setText(p.getAdd().getUpazilla());
         this.form_district.setText(p.getAdd().getZilla());
-        
+
         if (p instanceof Student) {
             form_id.setVisible(true);
             Student temp = (Student) p;
@@ -470,45 +468,52 @@ public class Second_Window extends javax.swing.JFrame {
             form_id.setVisible(false);
         }
     }
-    
+
     public void serilizer() throws Exception {
         total_count = database.total_count();
         try {
             FileOutputStream file1 = new FileOutputStream(savefile_path);
             ObjectOutputStream oos = new ObjectOutputStream(file1);
-            
+
             for (int i = 0; i < total_count; i++) {
                 oos.writeObject(database.get_object(i));
             }
             oos.close();
             file1.close();
-            
+
         } catch (Exception e) {
             e.printStackTrace();
             throw new Exception();
         }
-        
+
     }
-    
+
     public void deserilizer() {
         Person inputted_person = null;
         try {
-            FileInputStream file2 = new FileInputStream("./test.ser");
+            FileInputStream file2 = null;
+            file2 = new FileInputStream(savefile_path);
             ObjectInputStream ois = new ObjectInputStream(file2);
 
             // while (ois.readObject() != null) { // ফার্স্ট অবজেক্ট কে এই লাইনের পড়ে নিচ্ছে
             while (true) { // ERROR HERE
                 try {
                     inputted_person = (Person) ois.readObject();
+
+                    if (inputted_person instanceof Student) {
+                        inputted_person = (Student) ois.readObject();
+                    }
+
                     database.add_to_Database(inputted_person);
-                    
+
                 } catch (EOFException e) {
                     break;
                 }
             } // YAHOO
 
-            System.out.println("\nDONE");
-            
+            System.out.println("\n prev data loading DONE");
+            JOptionPane.showMessageDialog(null, "Previous data has been loaded from \"" + savefile_path + "\" Successfully.");
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         } catch (IOException e) {
@@ -516,9 +521,9 @@ public class Second_Window extends javax.swing.JFrame {
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
-        
+
     }
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
