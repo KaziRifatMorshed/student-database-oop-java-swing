@@ -196,16 +196,16 @@ public class Second_Window extends javax.swing.JFrame {
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel2)
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel5)
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
                                             .addComponent(jLabel8)
-                                            .addComponent(jLabel6)))
-                                    .addComponent(jLabel4)
-                                    .addComponent(jLabel3)
-                                    .addComponent(jLabel2))
+                                            .addComponent(jLabel6))))
                                 .addGap(106, 106, 106)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
@@ -243,7 +243,7 @@ public class Second_Window extends javax.swing.JFrame {
                                 .addComponent(update_button)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(close_button)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -291,7 +291,7 @@ public class Second_Window extends javax.swing.JFrame {
                     .addComponent(sort_button)
                     .addComponent(update_button)
                     .addComponent(close_button))
-                .addContainerGap(76, Short.MAX_VALUE))
+                .addContainerGap(51, Short.MAX_VALUE))
         );
 
         pack();
@@ -361,18 +361,17 @@ public class Second_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_student_radio_buttonActionPerformed
 
     private void delete_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delete_buttonActionPerformed
-        // DELETE
         try {
             Person delete_entry = database.get_object(current_index);
             database.remove_from_database(delete_entry);
-
             total_count = database.total_count();
 
             System.out.println("REMOVED:\n" + delete_entry + "\nTotal Count = " + total_count + "\n");
-            JOptionPane.showMessageDialog(null, text_form_name + " has been Deleted!");
+            JOptionPane.showMessageDialog(null, "\"" + delete_entry.getName() + "\" has been Deleted!");
             blank_text_box();
+
         } catch (IndexOutOfBoundsException e) {
-            System.err.println("ENTRY NOT FOUNT");
+            System.out.println("ENTRY NOT FOUNT");
             e.printStackTrace();
         }
     }//GEN-LAST:event_delete_buttonActionPerformed
@@ -391,7 +390,7 @@ public class Second_Window extends javax.swing.JFrame {
         current_index = 0;
         if (total_count > 0) {
             populate_text_box(database.get_object(0));
-            System.err.println("first entry is showing in GUI window");
+            System.err.println("first entry(index 0) is showing in GUI window");
         } else {
             System.err.println("NO ENTRY");
             JOptionPane.showMessageDialog(null, "NO ENTRY");
@@ -404,7 +403,7 @@ public class Second_Window extends javax.swing.JFrame {
         if (total_count > 0) {
             current_index = total_count - 1;
             populate_text_box(database.get_object(current_index));
-            System.err.println("last entry is showing in GUI window");
+            System.err.println("last entry(index " + current_index + ") is showing in GUI window. Total count = " + total_count);
         } else {
             System.out.println("NO ENTRY");
             JOptionPane.showMessageDialog(null, "NO ENTRY");
@@ -412,44 +411,46 @@ public class Second_Window extends javax.swing.JFrame {
     }//GEN-LAST:event_last_itemActionPerformed
 
     private void item_previousActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_item_previousActionPerformed
-
+        System.out.println("before = " + current_index);
         try {
             total_count = database.total_count();
 
             if (total_count > 0) {
 
-                if (current_index >= 0 && current_index < total_count) {
+                if (current_index > 0 && current_index < total_count) { // careful LOGIC
                     current_index--;
                 }
 
                 populate_text_box(database.get_object(current_index));
-                System.err.println(current_index + "th entry is showing in GUI window");
+                System.err.println("index= " + current_index + " in arraylist is showing in GUI window");
             } else {
                 System.err.println("NO ENTRY");
                 JOptionPane.showMessageDialog(null, "NO ENTRY");
             }
+            System.out.println("after = " + current_index);
         } catch (Exception e) {
 
         }
     }//GEN-LAST:event_item_previousActionPerformed
 
     private void next_itemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_next_itemActionPerformed
-
+        System.out.println("before =" + current_index);
         try {
             total_count = database.total_count();
 
             if (total_count > 0) {
 
-                if (current_index >= 0 && current_index < total_count) {
+                if (current_index >= 0 && current_index < total_count - 1) { // careful LOGIC
                     current_index++;
                 }
 
                 populate_text_box(database.get_object(current_index));
-                System.out.println(current_index + "th entry is showing in GUI window");
+                System.out.println("index= " + current_index + " in arraylist is showing in GUI window");
             } else {
                 System.out.println("NO ENTRY");
                 JOptionPane.showMessageDialog(null, "NO ENTRY");
             }
+            System.out.println("after =" + current_index);
         } catch (Exception e) {
         }
     }//GEN-LAST:event_next_itemActionPerformed
@@ -519,7 +520,7 @@ public class Second_Window extends javax.swing.JFrame {
                     } else if (obj instanceof Person) {
                         database.add_to_Database((Person) obj);
                     } else {
-                        break; // Exit loop if not a Person object
+                        break;
                     }
 
 //                    database.add_to_Database(obj); // this line was faulty line
