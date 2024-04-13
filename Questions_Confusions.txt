@@ -1,6 +1,0 @@
- - UML diagram e constructor er
- - I guess, sob gula tei toString lagbe, as, jodi ekjon er data print korte cai, ek bare print kore dite parbe
- - Need to fix database in UML.
-
-
- CONTRINUTOR: Md Rimon Islam (230236) and Kazi Rifat Morshed(230220)
