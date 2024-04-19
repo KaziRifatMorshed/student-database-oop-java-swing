@@ -35,8 +35,8 @@ public class Welcome_Window implements ActionListener {
         menuBar1.add(edit_menu);
         menuBar1.add(help_menu);
 
-        load_item = new JMenuItem("Load");
-        save_item = new JMenuItem("Save");
+//        load_item = new JMenuItem("Load");
+//        save_item = new JMenuItem("Save");
         exit_item = new JMenuItem("Exit");
 //        file_menu.add(load_item);
 //        file_menu.add(save_item);
@@ -76,8 +76,8 @@ public class Welcome_Window implements ActionListener {
             new Second_Window().setVisible(true);
 
         }
-        if (actionEvent.getSource() == load_item) {
-            // empty now
-        }
+//        if (actionEvent.getSource() == load_item) {
+//            // empty now
+//        }
     }
 }

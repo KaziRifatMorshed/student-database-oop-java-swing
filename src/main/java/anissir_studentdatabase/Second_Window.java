@@ -333,11 +333,15 @@ public class Second_Window extends javax.swing.JFrame {
             database.add_to_Database(new_entry);
         }
         total_count = database.total_count();
-        current_index++;
+        current_index = database.get_index_of(new_entry);
 
         System.out.println("ADDED:\n" + new_entry + "\nTotal Count = " + total_count + "\n");
         JOptionPane.showMessageDialog(null, "\"" + text_form_name + "\" has been Added!");
 
+        
+        total_count = database.total_count();
+        show_current_index.setText("[ " + (current_index + 1) + " / " + total_count + " ]"); 
+        
     }//GEN-LAST:event_add_buttonActionPerformed
 
     private void person_radio_buttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_person_radio_buttonActionPerformed
