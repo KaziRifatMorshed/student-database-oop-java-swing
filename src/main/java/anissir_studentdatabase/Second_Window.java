@@ -12,7 +12,7 @@ public class Second_Window extends javax.swing.JFrame {
     private boolean is_student = true;
     protected String text_form_name, text_form_road, text_form_post_office, text_form_zilla;
     protected int text_form_id = 0, total_count = 0, current_index = 0; // set current_index = 0
-    private String savefile_path = "./savefile/test.ser";
+    private String savefile_path = "./SaveFilePersonStuDatabase.ser";
 
     public Second_Window() {
         initComponents();
@@ -480,14 +480,14 @@ public class Second_Window extends javax.swing.JFrame {
 
 //        this.form_id.setText(Integer.toString(p.getStu_id()));// ???
         this.form_name.setText(p.getName());
-        this.form_road.setText(p.getAdd().getRoad());
-        this.form_post_office.setText(p.getAdd().getUpazilla());
-        this.form_district.setText(p.getAdd().getZilla());
+        this.form_road.setText(p.getad().getRoad());
+        this.form_post_office.setText(p.getad().getPostOffice());
+        this.form_district.setText(p.getad().getDistrict());
 
         if (p instanceof Student) {
             form_id.setVisible(true);
             Student temp = (Student) p;
-            this.form_id.setText(Integer.toString(temp.getStu_id()));
+            this.form_id.setText(Integer.toString(temp.getId()));
         } else {
             form_id.setVisible(false);
         }

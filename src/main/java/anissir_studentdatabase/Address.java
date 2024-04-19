@@ -2,30 +2,31 @@ package anissir_studentdatabase;
 
 import java.io.Serializable;
 
-public class Address implements Serializable{
-    protected String road, upazilla, zilla;
+public class Address implements Serializable {
 
-    public Address(String r, String u, String z) {
-        road = r;
-        upazilla = u;
-        zilla = z;
+    String Road, PostOffice, District;
+
+    public Address(String a, String b, String c) {
+        this.Road = a;
+        this.PostOffice = b;
+        this.District = c;
     }
 
-    public String getRoad() {
-        return road;
+    public String getRoad(){
+        return Road;
+    } 
+    
+    public String getPostOffice(){
+        return PostOffice;
     }
-
-    public String getUpazilla() {
-        return upazilla;
+    
+    public String getDistrict(){
+        return District;
     }
-
-    public String getZilla() {
-        return zilla;
-    }
-
     @Override
     public String toString() {
-        return "Address:\nRoad:" + road + ", PostOffice:" + upazilla + ", District:" + zilla ;
-//        return STR."Address:\nRoad:\{road}, PostOffice:\{upazilla}, District:\{zilla}";
+        String r = "Address:\n" + "Road:" + Road + "," + "PostOffice:" + PostOffice + "," + "District:" + District;
+        return r;
     }
+
 }

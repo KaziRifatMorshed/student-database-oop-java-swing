@@ -13,12 +13,12 @@ public class Database implements Serializable {
         arrayListDatabase = new ArrayList<>();
     }
     
-    public void add_to_Database(Person p) {
-        arrayListDatabase.add(p);
+    public void add_to_Database(Person o) {
+        arrayListDatabase.add(o);
     }
     
-    public void remove_from_database(Person p) {
-        arrayListDatabase.remove(p);
+    public void remove_from_database(Person o) {
+        arrayListDatabase.remove(o);
     }
     
     public void sort_database() {
