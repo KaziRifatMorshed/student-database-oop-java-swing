@@ -17,8 +17,6 @@ public class Second_Window extends javax.swing.JFrame {
     public Second_Window() {
         initComponents();
         database = new Database();
-        // KAZI RIFAT MORSHED 230220
-        // 14 April 2024 02:23AM Khulna, Bangladesh
         deserilizer();
         // end of CONSTRUCTOR
     }
