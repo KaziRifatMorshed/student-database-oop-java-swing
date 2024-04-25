@@ -1,7 +1,7 @@
 
 package anissir_studentdatabase;
 
-public class MAIN_AnisSir_StudentDatabase {
+public class MAIN {
 
     public static void main(String[] args) {
         System.out.println("Launching Person-Student Database app...");

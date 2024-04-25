@@ -22,7 +22,7 @@
           <archive>
             <manifest>
               <addClasspath>true</addClasspath>
-              <mainClass>anissir_studentdatabase.MAIN_AnisSir_StudentDatabase</mainClass>
+              <mainClass>anissir_studentdatabase.MAIN</mainClass>
             </manifest>
           </archive>
         </configuration>
