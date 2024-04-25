@@ -11,12 +11,20 @@ public class Person implements Serializable, Comparable<Person> {
         this.name = a;
         this.ad = ad;
     }
-    
-    public String getName(){
+
+    public String getName() {
         return name;
     }
-    
-    public Address getad(){
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAd(Address ad) {
+        this.ad = ad;
+    }
+
+    public Address getad() {
         return ad;
     }
 
@@ -26,11 +34,12 @@ public class Person implements Serializable, Comparable<Person> {
         result += ad;
         return result;
     }
-    
+
+    public void setId(int i){}; // in order to override in subclass
+
     @Override
-    public int compareTo(Person o){
+    public int compareTo(Person o) {
         return this.name.compareTo(o.name);
 //        throw new UnsupportedOperationException("Not supported yet");
     }
 }
-

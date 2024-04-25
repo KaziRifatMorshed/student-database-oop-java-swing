@@ -15,6 +15,18 @@ public class Address implements Serializable {
     public String getRoad(){
         return Road;
     } 
+
+    public void setRoad(String Road) {
+        this.Road = Road;
+    }
+
+    public void setPostOffice(String PostOffice) {
+        this.PostOffice = PostOffice;
+    }
+
+    public void setDistrict(String District) {
+        this.District = District;
+    }
     
     public String getPostOffice(){
         return PostOffice;

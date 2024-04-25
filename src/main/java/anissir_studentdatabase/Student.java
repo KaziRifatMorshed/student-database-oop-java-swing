@@ -9,6 +9,21 @@ public class Student extends Person implements Serializable{
         super(n,ad);
         this.Id=i;
     }
+
+    public void setId(int Id) {
+        this.Id = Id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    
+    @Override
+    public void setAd(Address ad) {
+        this.ad = ad;
+    }
+    
     public int getId(){
         return Id;
     }
