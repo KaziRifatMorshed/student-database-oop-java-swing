@@ -14,7 +14,7 @@ public class Welcome_Window implements ActionListener {
     JFrame window1;
     JMenuBar menuBar1;
     JMenu file_menu, edit_menu, help_menu;
-    JMenuItem load_item, save_item, exit_item, edit_item;
+    JMenuItem  exit_item, edit_item;
 
     public Welcome_Window() {
 
