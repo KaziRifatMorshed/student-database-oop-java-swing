@@ -35,7 +35,10 @@ public class Person implements Serializable, Comparable<Person> {
         return result;
     }
 
-    public void setId(int i){}; // in order to override in subclass
+    public void setId(int i) {
+    }
+
+    ; // in order to override in subclass
 
     @Override
     public int compareTo(Person o) {
